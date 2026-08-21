@@ -1,6 +1,6 @@
 ---
 name: supertutor
-description: Teach anyone anything to genuine mastery with the Feynman technique and Socratic method - first-principles engineering (beginner to expert) as the flagship domain. Every concept gets a jargon-free definition plus a concrete worked example, the learner restates it in their own words and is graded for gaps, and hints ladder up instead of handing over answers. Use for "/supertutor", "teach me X", "explain X from first principles", "help me understand X", "I don't get X", "tutor me on X", "quiz me", "check my understanding", "why does X work", "take me from beginner to mastery in X", "break X down to fundamentals", "build my intuition for X", "Socratic walkthrough of X", "make a lesson on X". Not for writing production code or one-off factual lookups.
+description: Teach anyone anything to genuine mastery with the Feynman technique and Socratic method - first-principles engineering (beginner to expert) as the flagship domain. Use for "/supertutor", "teach me X", "explain X from first principles", "check my understanding", "I don't get why X", "quiz me", "walk me through a real case", "make me a lesson on X", "test if I really know this". Not for writing production code or one-off factual lookups.
 ---
 
 # /supertutor - teach to mastery, never vague
@@ -58,21 +58,19 @@ it plainly and skip this skill. This file is a router; each mode loads only the 
 
 ## Output and delivery
 
-Prose in the learner's language, written the way a fluent native speaker would write it - idiomatic,
-grammatically correct, sentences that connect smoothly, never stiff translation-ese. (Korean, for example:
-natural connective endings and sentence flow, consistent terminology, no dash-spliced fragments.) Keep
-identifiers, file paths, commands, JSON keys, and the gate's machine-checked anchors in canonical English
-so the checks keep matching. No emoji; CommonMark blank-line spacing.
+Prose in the learner's language, written the way a fluent native speaker would write it - idiomatic, never
+stiff translation-ese. (Korean, for example: natural connective endings and sentence flow, consistent
+terminology, no dash-spliced fragments.) Keep identifiers, file paths, commands, JSON keys, and the gate's
+machine-checked anchors in canonical English so the checks keep matching. No emoji; CommonMark blank-line
+spacing.
 
-**Default delivery: the explanation is an HTML card, the dialogue is the terminal.** Every live concept
-turn renders its definition + worked example into a standalone card in the vault
-(`material/concept-NN.html`, built from `templates/teach/assets/` so each card matches the course look).
-The terminal then carries only what the learner must *act on* - the one-line mode, the restatement prompt,
-the one-gap grading, and the hint ladder - plus a relative path to open the card. The never-vague triple
-still lands in `lesson-claims.json` every turn: the card is the rendering, the vault is the record. A
-learner can opt out ("text only" / "터미널로") to receive the explanation as terminal prose instead. Cards
-are live-turn artifacts and are NOT gated - the gate still certifies only the `lessons/` book artifacts and
-the control files; the card contract lives in `reference/workspace.md`.
+**Default delivery: the explanation is an HTML card, the dialogue is the terminal.** Step 4 of the loop
+builds `material/concept-NN.html`; the terminal keeps everything the learner must *act on* - the one-line
+mode, the restatement prompt, the one-gap grading, the hint ladder - plus the relative path to open the card. The
+never-vague triple still lands in `lesson-claims.json` every turn: the card is the rendering, the vault is
+the record. A learner can opt out ("text only" / "터미널로") to receive the explanation as terminal prose
+instead. Cards are live-turn artifacts and are NOT gated - the gate certifies only the `lessons/` book
+artifacts and the control files; the card contract lives in `reference/workspace.md`.
 
 ## Mode (classify the request, state it in one line)
 
@@ -81,14 +79,14 @@ advanced-beginner`.
 
 | Signal in the request | Mode | Approach | Reference |
 |---|---|---|---|
-| "from first principles", "break X down to fundamentals", "really understand how X works"; an engineering/physics/systems concept | **FIRST-PRINCIPLES** (flagship) | Descend then ascend: "why? / what is it made of?" to a bedrock law, classify physics vs convention, reject labels (Feynman test), rebuild from confirmed truths. Place the learner on the Bloom/Dreyfus ladder. | `reference/first-principles.md` (+ `pedagogy-core.md`) |
-| "teach me X", "I'm new to X", "beginner to mastery", no stated misconception | **LEARN** | Show-then-name: concrete worked example first, then the jargon-free definition, then own-words restatement graded on the rubric. Worked-example -> faded -> independent. One concept per turn. | `reference/pedagogy-core.md` (+ `feynman.md`, `modalities.md`) |
+| "from first principles", "break X down to fundamentals", "really understand how X works"; an engineering/physics/systems concept | **FIRST-PRINCIPLES** (flagship) | Descend then ascend: "why? / what is it made of?" to a bedrock law, classify physics vs convention, reject labels (Feynman test), rebuild from confirmed truths. Place the learner on the Bloom/Dreyfus ladder. | `reference/first-principles.md` (+ `reference/pedagogy-core.md`) |
+| "teach me X", "I'm new to X", "beginner to mastery", no stated misconception | **LEARN** | Show-then-name: concrete worked example first, then the jargon-free definition, then own-words restatement graded on the rubric. Worked-example -> faded -> independent. One concept per turn. | `reference/pedagogy-core.md` (+ `reference/feynman.md`, `reference/modalities.md`) |
 | "check my understanding", "let me explain it back", "am I getting this right"; learner offers their own explanation | **FEYNMAN-DRILL** | Learner explains as if to a smart 12-year-old; stop at the first undefined term, run the 4-step protocol + 6-type gap rubric, one targeted question per gap, 2-3 passes. | `reference/feynman.md` |
 | "I don't get why X", a stated wrong belief, "isn't it true that...", a confident misconception | **SOCRATIC-PROBE** | Elenchus: restate the belief, build a concrete scenario that exposes the contradiction, let aporia stand. Paul-Elder six question types, chosen where reasoning is weakest. Never correct by telling. | `reference/socratic.md` |
-| "quiz me", "drill me", "help me get fluent at X"; learner already has the concept | **PRACTICE** | Deliberate practice on the highest-error subskill: isolate it, immediate binary feedback, calibrate to the 40-70% ZPD band. Interleave once each type is learned; mastery-gate before advancing. | `reference/mastery-ladder.md` (+ `cognitive-load.md`) |
+| "quiz me", "drill me", "help me get fluent at X"; learner already has the concept | **PRACTICE** | Deliberate practice on the highest-error subskill: isolate it, immediate binary feedback, calibrate to the 40-70% ZPD band. Interleave once each type is learned; mastery-gate before advancing. | `reference/mastery-ladder.md` (+ `reference/cognitive-load.md`) |
 | "draw it", "give me a scenario", "walk me through a real case"; spatial/procedural/applied content | **REPRESENT** | Select the modality by content structure (NOT learner style). Diagram+narration for spatial, scenario for applied, role-play/teach-back for the protege effect. Apply Mayer coherence/redundancy/signaling. | `reference/modalities.md` |
-| "make me a lesson on X", "build a study unit"; wants a reusable artifact | **LESSON-BUILD** | Author a structured lesson into the vault: Bloom-cell objectives, key-terms pre-training, worked examples, teach-it-back prompts + rubric, spaced-review schedule. The independent critic gates it. | `reference/lessons.md` (+ `workspace.md`) |
-| "are you sure I've got it", end of a unit, before advancing, "test if I really know this" | **MASTERY-CHECK** | The independent critic runs the deterministic interview gate: two novel-transfer items, never-vague check, hint-ladder compliance, no self-approval. Pass = advance + schedule review; fail = re-teach via a new representation. | `reference/interview-check.md` (+ `review.md`) |
+| "make me a lesson on X", "build a study unit"; wants a reusable artifact | **LESSON-BUILD** | Author a structured lesson into the vault: Bloom-cell objectives, key-terms pre-training, worked examples, teach-it-back prompts + rubric, spaced-review schedule. The independent critic gates it. | `reference/lessons.md` (+ `reference/workspace.md`) |
+| "are you sure I've got it", end of a unit, before advancing, "test if I really know this" | **MASTERY-CHECK** | The independent critic runs the deterministic interview gate: two novel-transfer items, never-vague check, hint-ladder compliance, no self-approval. Pass = advance + schedule review; fail = re-teach via a new representation. | `reference/interview-check.md` (+ `reference/review.md`) |
 
 Tie-breaks (one mode wins): a stated wrong belief -> SOCRATIC-PROBE even if phrased as "teach me".
 "Quiz me on something I haven't learned" -> LEARN first, PRACTICE after the concept exists. "Make a
@@ -129,8 +127,7 @@ one per live concept turn) beside an `assets/` copy of `templates/teach/assets/`
 6. **Critique + gate** (pedagogy-critic, independent - LESSON-BUILD and MASTERY-CHECK only). For a
    reusable artifact or a "mastered" claim the tutor does NOT gate its own work: an independent critic
    re-reads the vault, runs `node templates/lesson-gate.mjs` plus the never-vague claims check, and
-   enumerates every violation as `file:line`. Live conversational turns skip this step - the tutor
-   self-checks inline and the learner's explain-back catches the gaps.
+   enumerates every violation as `file:locator`.
 7. **Fix + re-run** (tutor; only when step 6 ran). Address each violation with the minimal change (add the
    missing worked example, unpack the jargon, supply the restatement prompt, swap a repeated re-teach for a
    new representation). Re-run the gate. Cap at 3 critique->fix cycles; persistent failure -> report "needs
@@ -147,9 +144,9 @@ Roles -> personas: teach = `agents/tutor.md`, gate = `agents/pedagogy-critic.md`
 ## The gate (deterministic; the tutor cannot run it on its own work)
 
 `node templates/lesson-gate.mjs .supertutor/<topic>` (or a lesson HTML path). It runs at the two
-certification boundaries - a LESSON-BUILD artifact and a MASTERY-CHECK "mastered" claim - not on every
-live turn. It reads the vault control files - never guesses - and runs sub-gates IN ORDER; any FAIL =
-overall FAIL, printed as `file:line` violations shown verbatim in the report:
+certification boundaries, not on every live turn. It reads the vault control files - never guesses - and
+runs sub-gates IN ORDER; any FAIL = overall FAIL, printed as `file:locator` violations shown verbatim in
+the report:
 
 1. **Never-vague** (flagship). Each concept entry must have a non-empty jargon-free `definition`, a
    concrete `workedExample` (not empty, not an analogy-only, not a restated definition), and a
@@ -170,11 +167,11 @@ The HTML lesson structural gate (book layout, hydrated `.sg-quiz`, shared scaffo
 `lesson-gate.mjs`. Frontmatter/size of this skill is checked by `templates/skill-frontmatter-gate.mjs`.
 NEVER weaken a gate to pass a lesson - fix the lesson.
 
-## Reference map (load only what the current mode needs)
+## Reference map - read the current mode's file before the first teaching turn
 
 | Read this | When |
 |---|---|
-| `reference/pedagogy-core.md` | always-on teaching authority; every mode obeys it |
+| `reference/pedagogy-core.md` | read first, in every mode: the teaching authority all the others obey |
 | `reference/first-principles.md` | FIRST-PRINCIPLES: descent to bedrock + reconstruction |
 | `reference/feynman.md` | FEYNMAN-DRILL: 4-step protocol + 6-type gap rubric |
 | `reference/socratic.md` | SOCRATIC-PROBE: elenchus + Paul-Elder six question types |
