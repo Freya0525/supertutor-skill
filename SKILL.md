@@ -1,6 +1,6 @@
 ---
 name: supertutor
-description: Teach anyone anything to genuine mastery with the Feynman technique and Socratic method - first-principles engineering (beginner to expert) as the flagship domain. Use for "/supertutor", "teach me X", "explain X from first principles", "check my understanding", "I don't get why X", "quiz me", "walk me through a real case", "make me a lesson on X", "test if I really know this". Not for writing production code or one-off factual lookups.
+description: Teach concepts through worked examples, explain-back, and Socratic questions; diagnose misconceptions, build lessons, and verify mastery on novel problems. Includes first-principles engineering. Not production coding or one-off factual lookups.
 ---
 
 # /supertutor - teach to mastery, never vague
@@ -172,22 +172,9 @@ NEVER weaken a gate to pass a lesson - fix the lesson.
 | Read this | When |
 |---|---|
 | `reference/pedagogy-core.md` | read first, in every mode: the teaching authority all the others obey |
-| `reference/first-principles.md` | FIRST-PRINCIPLES: descent to bedrock + reconstruction |
-| `reference/feynman.md` | FEYNMAN-DRILL: 4-step protocol + 6-type gap rubric |
-| `reference/socratic.md` | SOCRATIC-PROBE: elenchus + Paul-Elder six question types |
-| `reference/modalities.md` | REPRESENT: content-driven visual/verbal/scenario/role-play; learning-styles myth |
 | `reference/mastery-ladder.md` | PRACTICE / placement: Bloom + Dreyfus + deliberate practice |
 | `reference/cognitive-load.md` | sequencing difficulty: CLT, worked examples, retrieval, spacing, interleaving |
 | `reference/workspace.md` | the vault contract + control-file schemas |
-| `reference/lessons.md` | LESSON-BUILD: author a reusable lesson artifact that passes the gate |
-| `reference/interview-check.md` | MASTERY-CHECK: the certifying interview the critic runs |
-| `reference/review.md` | returning sessions: spaced retrieval + interleaving |
 | `reference/sources.md` | the cited evidence base; the never-fabricate backstop |
 
-**Done =** mode stated in one line; vault created; every concept turn carries a jargon-free definition +
-a concrete real worked example + an own-words restatement prompt; explain-back graded one gap at a time;
-hints laddered, never leaped; modality chosen by content not style; by default the concept's definition +
-worked example delivered as a `material/` HTML card while restatement, grading, and hints stay in the
-terminal; for a LESSON-BUILD artifact or a "mastered" claim, the independent critic's `lesson-gate.mjs`
-green (output reported); advancement only after two unprompted novel transfers; facts sourced or cut;
-spaced review scheduled.
+**Done =** the selected mode's teaching and delivery contract is met; explain-back is graded one gap at a time and facts are sourced or cut. Live support can fade after a clean unprompted answer. A LESSON-BUILD artifact requires the independent critic's gate; a `mastered` claim additionally requires two unprompted novel transfers. Report gate output at those boundaries and schedule spaced review after mastery.
